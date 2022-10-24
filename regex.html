@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="bootstrap.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+       
+    
+    <div class="container">
+         <br>
+         <form onsubmit="return validation()">
+        <div class="form-group">
+           <label for="">Username:</label>
+           <input type="text"  id="username" class="form-control" placeholder="Enter Name">
+           <span class="text-danger font-weight-bold" id="usererror"></span>
+        </div><br>
+        <div class="form-group">
+            <label for="">Password:</label>
+            <input type="password"  id="password" class="form-control" placeholder="Enter Password">
+            <span class="text-danger font-weight-bold" id="passworderror"></span>
+         </div><br>
+         <div class="form-group">
+            <label for="">Confirm Password</label>
+            <input type="password"  id="confirm" class="form-control" placeholder="Enter Confirm Password">
+            <span class="text-danger font-weight-bold" id="cpassworderror"></span>
+         </div><br>
+         <div class="form-group">
+            <label for="">Email</label>
+            <input type="email"  id="email" class="form-control" placeholder="Enter Your Email">
+            <span class="text-danger font-weight-bold" id="emailerror"></span>
+         </div><br>
+         <div class="form-group">
+            <label for="">Contact</label>
+            <input type="contact"  id="contact" class="form-control" placeholder="Enter Your Contact">
+            <span class="text-danger font-weight-bold" id="contacterror"></span>
+         </div><br>
+         <input type="submit" class="btn btn-primary">
+    </form>
+    </div>
+
+
+    <script>
+        function validation(){
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var confirm = document.getElementById('confirm').value;
+            var email = document.getElementById('email').value;
+            var contact = document.getElementById('contact').value;
+
+            var usercheck = /^[A-Za-z.]{3,30}$/;
+            var passwordcheck = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+            var emailcheck = /^[A-Za-z_]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/
+            var contactcheck = /^[789][0-9]{9}$/
+
+            if(usercheck.test(username)){
+                document.getElementById('usererror').innerHTML = "";
+            }
+            else{
+                document.getElementById('usererror').innerHTML = "** Username is invalid";
+                return false;
+            }
+
+            if(passwordcheck.test(password)){
+                document.getElementById('passworderror').innerHTML = "";
+            }
+            else{
+                document.getElementById('passworderror').innerHTML = "** Password is invalid";
+                return false;
+            }
+
+            if(password.match(confirm)){
+                document.getElementById('cpassword').innerHTML = " ";
+            }
+            else{
+                document.getElementById('cpassworderror').innerHTML = "** Password is not matching";
+                return false;
+            }
+
+            if(emailcheck.test(email)){
+                document.getElementById('emailerror').innerHTML = "";
+            }
+            else{
+                document.getElementById('emailerror').innerHTML = "** Email is invalid";
+                return false;
+            }
+
+
+            if(contactcheck.test(contact)){
+                document.getElementById('contacterror').innerHTML = "";
+            }
+            else{
+                document.getElementById('contacterror').innerHTML = "** Contact is invalid";
+                return false;
+            }
+        }
+
+    </script>
+</body>
+</html>
